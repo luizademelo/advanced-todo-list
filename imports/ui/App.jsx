@@ -15,10 +15,7 @@ export const App = () => {
 
   return (
     <div className="main">
-    {
-      user ? navigate('/tasks') : 
         <LoginForm />
-    }
     </div>
   );
 };

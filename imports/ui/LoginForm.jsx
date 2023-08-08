@@ -13,12 +13,12 @@ import {useTracker} from 'meteor/react-meteor-data';
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const navigate = useNavigate(); 
+  
   const handleSubmit = (e) => {
-    e.preventDefault();
-    Meteor.loginWithPassword(username, password);
-    // const navigate = useNavigate(); 
-    // navigate('/task'); 
+      e.preventDefault();
+      Meteor.loginWithPassword(username, password);
+      navigate('/tasks'); 
   };
 
   return (

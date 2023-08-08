@@ -11,10 +11,15 @@ const logout = () => {
     redirect('/');  
 }
 
+
 export const TasksMenu = ({user}) => {
-
+    
     const navigate = useNavigate(); 
-
+    
+    const handleConfigTask = (e) => {
+        navigate('/configTask'); 
+    }
+    
     if(!user){
         navigate('/'); 
         return; 
@@ -28,7 +33,8 @@ export const TasksMenu = ({user}) => {
             </div>
             <Button 
                 variant='contained'
-                sx={{borderRadius:28}}
+                sx={{borderRadius:'50%', width: '45px', height: '50px', fontSize:'30px'}}
+                onClick={handleConfigTask}
                 >+</Button>
         </div>
     )

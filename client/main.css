@@ -50,3 +50,21 @@ body {
   display: flex;
   align-self: flex-end;
 }
+
+.config-task-menu{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+}
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.task-form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
