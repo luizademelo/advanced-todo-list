@@ -42,3 +42,11 @@ body {
   cursor: pointer; 
 }
 
+.tasks-menu {
+  display: flex;
+}
+
+.user {
+  display: flex;
+  align-self: flex-end;
+}

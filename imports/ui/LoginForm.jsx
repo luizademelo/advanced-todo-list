@@ -1,10 +1,14 @@
 import React from "react";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Meteor } from "meteor/meteor";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
+import { redirect } from "react-router-dom";
+import {useHistory} from 'react-router-dom'; 
+import {useTracker} from 'meteor/react-meteor-data'; 
+
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -13,6 +17,8 @@ export const LoginForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     Meteor.loginWithPassword(username, password);
+    // const navigate = useNavigate(); 
+    // navigate('/task'); 
   };
 
   return (
