@@ -1,4 +1,44 @@
 body {
   padding: 10px;
   font-family: sans-serif;
+  display: flex; 
+  justify-content: center;
+  align-items: center;  
+  /* background-image: linear-gradient(to right bottom, #f0f6ff, #ceddfd, #b4c2f9, #a3a6f2, #9b87e6); */
+
+  position: absolute;
+
+  top: 0;
+  left: 0; 
+  right: 0;
+  bottom: 0;
+
+  margin: 0; 
+  padding: 0;
 }
+
+.welcome {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px; 
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;  
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form > div {
+  margin: 10px;
+}
+
+.user {
+  font-weight: bold;
+  cursor: pointer; 
+}
+
