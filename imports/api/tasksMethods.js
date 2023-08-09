@@ -17,5 +17,13 @@ Meteor.methods({
             createdAt: new Date(),
             userId: this.userId,
         })
+    }, 
+
+    'tasks.remove'(taskId){
+        if(!this.userId){
+            throw new Meteor.Error('Not Authorized');   
+        }
+
+        TasksCollection.remove(taskId); 
     }
 })

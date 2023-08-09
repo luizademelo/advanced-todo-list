@@ -1,9 +1,21 @@
-import { List, ListItem, ListItemText, ListItemIcon } from "@mui/material";
-import React from "react";
+import { List, ListItem, ListItemText, ListItemIcon, Menu, MenuItem } from "@mui/material";
+import React, { useState } from "react";
 import AssignmentIcon from "@mui/icons-material/Assignment";
-import MenuIcon from "@mui/icons-material/Menu";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
 
-export const TaskList = ({ tasks, user }) => {
+export const TaskList = ({ tasks, user }) => { 
+
+  const [anchorEl, setAnchorEl] = useState(null); 
+  const open = Boolean(anchorEl); 
+ 
+  const handleOpen = (event) => {
+    setAnchorEl(event.currentTarget); 
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null); 
+  }
+
   return (
     <List>
       {tasks.map((task) => (
@@ -12,9 +24,17 @@ export const TaskList = ({ tasks, user }) => {
             <AssignmentIcon />
           </ListItemIcon>
           <ListItemText primary={task.name} secondary={user.username} />
-            <ListItemIcon sx={{justifyContent: 'end'}}>
-                <MenuIcon />
+            <ListItemIcon onClick={handleOpen} sx={{justifyContent: 'end'}}>
+                <MoreVertIcon sx={{cursor: 'pointer'}}/>
             </ListItemIcon>
+            <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+            >
+                <MenuItem>Editar</MenuItem>
+                <MenuItem>Remover</MenuItem>
+            </Menu>
         </ListItem>
       ))}
     </List>
