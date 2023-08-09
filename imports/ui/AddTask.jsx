@@ -7,7 +7,7 @@ import { useState } from "react";
 import {Meteor} from 'meteor/meteor'
 
 
-export const ConfigTask = ({ user }) => {
+export const AddTask = ({ user }) => {
 
   const navigate = useNavigate(); 
 
@@ -22,7 +22,7 @@ export const ConfigTask = ({ user }) => {
     }
 
 
-    Meteor.call('tasks.insert', name); 
+    Meteor.call('tasks.insert', name, description); 
     
     setName(''); 
     setDescription('');

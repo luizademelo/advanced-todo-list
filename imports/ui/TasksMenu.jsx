@@ -35,8 +35,8 @@ export const TasksMenu = ({user}) => {
         return; 
     }
 
-    const handleConfigTask = (e) => {
-        navigate('/configTask'); 
+    const handleAddTask = (e) => {
+        navigate('/addTask'); 
     }
     
 
@@ -50,11 +50,11 @@ export const TasksMenu = ({user}) => {
             <Button 
                 variant='contained'
                 sx={{borderRadius:'50%', width: '45px', height: '50px', fontSize:'30px'}}
-                onClick={handleConfigTask}
+                onClick={handleAddTask}
                 
                 >+</Button>
             <div>
-                <TaskList tasks={tasks} />
+                <TaskList tasks={tasks} user={user}/>
             </div>
         </div>
     )
