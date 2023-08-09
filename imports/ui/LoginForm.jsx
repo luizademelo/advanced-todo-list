@@ -16,7 +16,7 @@ export const LoginForm = () => {
   const navigate = useNavigate(); 
   
   const handleSubmit = (e) => {
-      e.preventDefault();
+    e.preventDefault();
       Meteor.loginWithPassword(username, password);
       navigate('/tasks'); 
   };

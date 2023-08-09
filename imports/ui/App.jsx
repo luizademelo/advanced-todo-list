@@ -10,9 +10,6 @@ import { TasksMenu } from "./TasksMenu";
 
 export const App = () => {
 
-  const user = useTracker(() => Meteor.user()); 
-  const navigate = useNavigate(); 
-
   return (
     <div className="main">
         <LoginForm />

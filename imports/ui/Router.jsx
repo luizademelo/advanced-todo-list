@@ -3,7 +3,7 @@ import { Meteor } from "meteor/meteor";
 import { BrowserRouter, Switch, Routes, Route } from "react-router-dom";
 import { App } from "./App";
 import { TasksMenu } from "./TasksMenu";
-import { Task } from "./Task";
+import { Task } from "./TaskList";
 import { LoginForm } from "./LoginForm";
 import { useTracker } from "meteor/react-meteor-data";
 import { ConfigTask } from "./ConfigTask";
@@ -16,7 +16,7 @@ export const Router = () => {
         <Route exact path="/" element={<App />} />
         <Route path="/task" element={<Task />} />
         <Route path="/tasks" element={<TasksMenu user={user}/>} />
-        <Route path="configTask" element={<ConfigTask />} />
+        <Route path="configTask" element={<ConfigTask user={user}/>} />
       </Routes>
     </BrowserRouter>
   );
