@@ -3,11 +3,12 @@ import React from 'react';
 
 
 export const TaskList = ({tasks}) => {
+    console.log('task list:', tasks);
     return (
         <List>
         {
             tasks.map((task) => (
-                <ListItem disablePadding>
+                <ListItem key={task._id}>
                     <ListItemText primary={task.name} secondary={task.description}/>
                 </ListItem>
             ))
@@ -15,4 +16,6 @@ export const TaskList = ({tasks}) => {
         }
         </List>
         )
+
+    
 }

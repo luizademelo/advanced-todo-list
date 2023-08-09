@@ -19,7 +19,15 @@ export const TasksMenu = ({user}) => {
     
     const navigate = useNavigate(); 
     
-    const tasks = useTracker(() => TasksCollection.find({}).fetch()); 
+    const tasks = useTracker(() => useTracker(() => {
+        const handler = Meteor.subscribe('tasks'); 
+
+        const tasks = TasksCollection.find({}).fetch(); 
+
+        return tasks; 
+    }))
+
+
     console.log(tasks); 
     
     if(!user){

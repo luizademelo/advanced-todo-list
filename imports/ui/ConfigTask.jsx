@@ -4,6 +4,8 @@ import TextField from "@mui/material/TextField";
 import {TasksCollection} from '../db/TasksCollection'; 
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import {Meteor} from 'meteor/meteor'
+
 
 export const ConfigTask = ({ user }) => {
 
@@ -20,11 +22,7 @@ export const ConfigTask = ({ user }) => {
     }
 
 
-    TasksCollection.insert({
-      name: name.trim(),
-      description: description.trim(),
-        createdAt: new Date() 
-    })
+    Meteor.call('tasks.insert', name); 
     
     setName(''); 
     setDescription('');
