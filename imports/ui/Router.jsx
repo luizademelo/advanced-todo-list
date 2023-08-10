@@ -7,6 +7,7 @@ import { Task } from "./TaskList";
 import { LoginForm } from "./LoginForm";
 import { useTracker } from "meteor/react-meteor-data";
 import { AddTask } from "./AddTask";
+import { EditTask } from "./EditTask";
 
 export const Router = () => {
   const user = useTracker(() => Meteor.user());
@@ -16,6 +17,7 @@ export const Router = () => {
         <Route exact path="/" element={<App />} />
         <Route path="/tasks" element={<TasksMenu user={user}/>} />
         <Route path="/addTask" element={<AddTask user={user}/>} />
+        <Route path="/editTask" Component={EditTask} />
       </Routes>
     </BrowserRouter>
   );
