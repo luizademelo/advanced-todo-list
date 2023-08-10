@@ -31,6 +31,10 @@ export const AddTask = ({ user }) => {
 
   }
 
+  const handleCancel = () => {
+    navigate('/tasks'); 
+  }
+
   return (
     <div className="config-task-menu">
       <div className="task-form">
@@ -48,7 +52,7 @@ export const AddTask = ({ user }) => {
       </div>
       <div className="task-form-buttons">
         <div>
-          <Button id="form-button" variant="contained">
+          <Button id="form-button" variant="contained" onClick={handleCancel}>
             Cancelar
           </Button>
         </div>

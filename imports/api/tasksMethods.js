@@ -25,5 +25,24 @@ Meteor.methods({
         }
 
         TasksCollection.remove(taskId); 
+    },
+
+    'tasks.update'(taskId, name, description){
+        check(taskId, String); 
+        check(name, String); 
+        check(description, String); 
+
+        if(!this.userId){
+            throw new Meteor.Error('Not Authorized')
+        }
+
+        TasksCollection.update(taskId, {
+            $set: {
+                name,
+                description
+            }
+        }); 
     }
+
+
 })
