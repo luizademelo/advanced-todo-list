@@ -50,12 +50,11 @@ export const LoginForm = () => {
           Entrar
         </Button>
         <div>
-          <Link
+          <Button
             onClick={handleSignUp}
-            sx={{ color: "black", cursor: "pointer" }}
           >
             Cadastrar
-          </Link>
+          </Button>
         </div>
       </div>
     </div>

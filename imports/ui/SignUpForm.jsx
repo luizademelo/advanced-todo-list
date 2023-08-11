@@ -1,10 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Meteor } from "meteor/meteor";
 import { Accounts } from "meteor/accounts-base";
-import { InputLabel, MenuItem, Select, TextField } from "@mui/material";
+import { Button, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
 
 export const SignUpForm = () => {
+ 
+  const navigate = useNavigate(); 
+
   const [name, setName] = useState("");
+  const [password, setPassword] = useState(""); 
   const [email, setEmail] = useState("");
   const [birth, setBirth] = useState("");
   const [sex, setSex] = useState("");
@@ -13,8 +18,23 @@ export const SignUpForm = () => {
   // TODO
   // adicionar foto
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    Accounts.createUser({
+        username: name, 
+        password: password,
+        email: email,
+        birth: birth, 
+        sex: sex,
+        company: company
+    })
+
+    navigate('/'); 
+  }
+
   return (
       <div className="signup-form">
+        <Typography sx={{alignSelf: 'center'}}>Cadastro de usuário</Typography>
         <div>
           <TextField
             label="Nome"
@@ -31,6 +51,15 @@ export const SignUpForm = () => {
                 variant="outlined"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required
+            />
+        </div>
+        <div>
+            <TextField
+                label="Senha"
+                variant="outlined"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 required
             />
         </div>
@@ -64,6 +93,7 @@ export const SignUpForm = () => {
 
             />
         </div>
+        <Button variant="contained" onClick={handleSubmit}>Cadastrar</Button>
       </div>
   );
 };

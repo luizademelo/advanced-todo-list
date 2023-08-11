@@ -25,11 +25,13 @@ const logout = () => {
 export const TasksMenu = ({ user }) => {
   const navigate = useNavigate();
 
+  const userFilter = user ? {userId: user._id} : {}
+
   const tasks = useTracker(() =>
     useTracker(() => {
       const handler = Meteor.subscribe("tasks");
 
-      const tasks = TasksCollection.find({}).fetch();
+      const tasks = TasksCollection.find(userFilter).fetch();
 
       return tasks;
     })
