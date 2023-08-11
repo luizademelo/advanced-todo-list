@@ -14,6 +14,7 @@ Meteor.methods({
         TasksCollection.insert({
             name,
             description,
+            status: 'Cadastrada', 
             createdAt: new Date(),
             userId: this.userId,
         })
@@ -27,7 +28,7 @@ Meteor.methods({
         TasksCollection.remove(taskId); 
     },
 
-    'tasks.update'(taskId, name, description){
+    'tasks.update'(taskId, name, description, status){
         check(taskId, String); 
         check(name, String); 
         check(description, String); 
@@ -39,7 +40,8 @@ Meteor.methods({
         TasksCollection.update(taskId, {
             $set: {
                 name,
-                description
+                description,
+                status
             }
         }); 
     }

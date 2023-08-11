@@ -16,7 +16,7 @@ export const EditTask = () => {
   const [description, setDescription] = useState(task.description);
 
   const handleUpdate = () => {
-    Meteor.call('tasks.update', task._id, name, description); 
+    Meteor.call('tasks.update', task._id, name, description, task.status); 
     navigate('/tasks'); 
   }
 
