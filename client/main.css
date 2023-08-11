@@ -75,3 +75,10 @@ body {
   align-self: flex-end;
   margin-left: 20px; 
 }
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+

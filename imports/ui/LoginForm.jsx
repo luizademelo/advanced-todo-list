@@ -4,21 +4,23 @@ import { useNavigate } from "react-router-dom";
 import { Meteor } from "meteor/meteor";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { Typography } from "@mui/material";
-import { redirect } from "react-router-dom";
-import {useHistory} from 'react-router-dom'; 
-import {useTracker} from 'meteor/react-meteor-data'; 
-
+import { Link, Typography } from "@mui/material";
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const navigate = useNavigate(); 
-  
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-      Meteor.loginWithPassword(username, password);
-      navigate('/tasks'); 
+    Meteor.loginWithPassword(username, password);
+    navigate("/tasks");
+  };
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    navigate('/signup'); 
+    
   };
 
   return (
@@ -47,6 +49,14 @@ export const LoginForm = () => {
         <Button variant="contained" onClick={handleSubmit}>
           Entrar
         </Button>
+        <div>
+          <Link
+            onClick={handleSignUp}
+            sx={{ color: "black", cursor: "pointer" }}
+          >
+            Cadastrar
+          </Link>
+        </div>
       </div>
     </div>
   );
