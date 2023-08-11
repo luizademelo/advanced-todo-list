@@ -21,7 +21,15 @@ export const Task = ({ task, user }) => {
   const navigate = useNavigate();
 
   const handleEdit = () => {
-    navigate("/editTask", { state: { task } });
+
+    if(user._id != task.userId){
+      alert('Você não é o usuário que criou a tarefa!')
+      navigate('/tasks');
+    }else{
+      navigate("/editTask", { state: { task } });
+    }
+
+
   };
 
   const handleRemove = () => {
