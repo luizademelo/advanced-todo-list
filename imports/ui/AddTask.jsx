@@ -1,7 +1,9 @@
 import React from "react";
 import Button from "@mui/material/Button";
+
+import Checkbox from '@mui/material/Checkbox';
 import TextField from "@mui/material/TextField";
-import {TasksCollection} from '../db/TasksCollection'; 
+import FormControlLabel from '@mui/material/FormControlLabel';
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import {Meteor} from 'meteor/meteor'
@@ -13,6 +15,7 @@ export const AddTask = ({ user }) => {
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [isPersonal, setIsPersonal] = useState(false); 
 
   const handleInsert = e => {
     e.preventDefault(); 
@@ -22,7 +25,7 @@ export const AddTask = ({ user }) => {
     }
 
 
-    Meteor.call('tasks.insert', name, description); 
+    Meteor.call('tasks.insert', name, description, isPersonal); 
     
     setName(''); 
     setDescription('');
@@ -35,20 +38,32 @@ export const AddTask = ({ user }) => {
     navigate('/tasks'); 
   }
 
+  const handleCheckbox = (event) => {
+    setIsPersonal(event.target.checked); 
+  }
+
   return (
     <div className="config-task-menu">
       <div className="task-form">
+
         <TextField 
           variant="standard" 
           label="Nome"
           onChange={(e) => setName(e.target.value)}
           ></TextField>
+
         <TextField 
           variant="standard" 
           label="Descrição"
           onChange={(e) => setDescription(e.target.value)}
           ></TextField>
+
         <TextField variant="standard" label="Data"></TextField>
+        <FormControlLabel 
+          label="É uma tarefa pessoal" 
+          control={<Checkbox checked={isPersonal} onChange={handleCheckbox} />}
+        />
+
       </div>
       <div className="task-form-buttons">
         <div>

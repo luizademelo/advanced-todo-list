@@ -4,8 +4,9 @@ import { TasksCollection } from '../db/TasksCollection';
 
 
 Meteor.methods({
-    'tasks.insert'(name, description){
+    'tasks.insert'(name, description, isPersonal){
         check(name, String); 
+        check(isPersonal, Boolean); 
 
         if(!this.userId){
             throw new Meteor.Error('Not Authorized'); 
@@ -17,6 +18,7 @@ Meteor.methods({
             status: 'Cadastrada', 
             createdAt: new Date(),
             userId: this.userId,
+            isPersonal
         })
     }, 
 
