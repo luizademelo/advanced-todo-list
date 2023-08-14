@@ -19,18 +19,18 @@ const logout = () => {
 export const TasksMenu = ({ user }) => {
   const navigate = useNavigate();
 
-  const userPersonalFilter = user ? {userId: user._id, isPersonal: true} : {}
-  const nonPersonalFilter = {isPersonal: {$eq: false}}
+  // const userPersonalFilter = user ? {userId: user._id, isPersonal: true} : {}
+  // const nonPersonalFilter = {isPersonal: {$eq: false}}
 
   const tasks = useTracker(() =>
     useTracker(() => {
       const handler = Meteor.subscribe("tasks");
 
       const tasks = TasksCollection.find({
-        $or: [
-          userPersonalFilter, 
-          nonPersonalFilter,
-        ]
+        // $or: [
+        //   userPersonalFilter, 
+        //   nonPersonalFilter,
+        // ]
       }).fetch();
 
       return tasks;

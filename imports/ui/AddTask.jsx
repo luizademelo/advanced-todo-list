@@ -33,7 +33,6 @@ export const AddTask = ({ user }) => {
     navigate('/tasks');
 
   }
-  console.log(user);
 
   const handleCancel = () => {
     navigate('/tasks'); 
