@@ -59,6 +59,7 @@ export const AddTask = ({ user }) => {
           ></TextField>
 
         <TextField variant="standard" label="Data"></TextField>
+        
         <FormControlLabel 
           label="É uma tarefa pessoal" 
           control={<Checkbox checked={isPersonal} onChange={handleCheckbox} />}

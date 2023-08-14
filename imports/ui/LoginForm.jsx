@@ -13,8 +13,18 @@ export const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Meteor.loginWithPassword(username, password);
-    navigate("/tasks");
+    Meteor.loginWithPassword(username, password, (error) =>{
+      if(error){
+        if(error.reason == "User not found"){
+          alert("Usuário não encontrado");
+        }
+      }else{
+        navigate("/tasks");
+      }
+    });
+
+
+
   };
 
   const handleSignUp = (e) => {
