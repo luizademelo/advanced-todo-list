@@ -55,7 +55,7 @@ export const TasksMenu = ({ user }) => {
         <div className="user" onClick={logout}>
           {user.username}
         </div>
-        <TaskList tasks={tasks}  />
+        <TaskList tasks={tasks} user={user} />
       </div>
       <div className="add-button">
         <AddCircleOutlineIcon 

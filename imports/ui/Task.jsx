@@ -11,7 +11,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useNavigate, Navigate } from "react-router-dom";
 import { Meteor } from "meteor/meteor";
 
-export const Task = ({ task }) => {
+export const Task = ({ task, user }) => {
   const [anchorElStatus, setAnchorElStatus] = useState(null);
   const openStatus = Boolean(anchorElStatus);
 
@@ -23,17 +23,18 @@ export const Task = ({ task }) => {
   const handleEdit = () => {
 
     if(user._id != task.userId){
-      alert('Você não é o usuário que criou a tarefa!')
-      navigate('/tasks');
+      alert('Você não é o usuário que criou a tarefa!');
     }else{
       navigate("/editTask", { state: { task } });
     }
-
-
   };
 
   const handleRemove = () => {
-    Meteor.call("tasks.remove", task._id);
+    if(user._id != task.userId){
+      alert('Você não é o usuário que criou a tarefa!'); 
+    }else{
+      Meteor.call("tasks.remove", task._id);
+    }
   };
 
   const handleOpenStatus = (event) => {
