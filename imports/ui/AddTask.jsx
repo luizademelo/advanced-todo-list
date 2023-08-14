@@ -25,7 +25,7 @@ export const AddTask = ({ user }) => {
     }
 
 
-    Meteor.call('tasks.insert', name, description, isPersonal); 
+    Meteor.call('tasks.insert', name, description, isPersonal, user.username); 
     
     setName(''); 
     setDescription('');
@@ -33,6 +33,7 @@ export const AddTask = ({ user }) => {
     navigate('/tasks');
 
   }
+  console.log(user);
 
   const handleCancel = () => {
     navigate('/tasks'); 

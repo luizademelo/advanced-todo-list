@@ -11,7 +11,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { useNavigate, Navigate } from "react-router-dom";
 import { Meteor } from "meteor/meteor";
 
-export const Task = ({ task, user }) => {
+export const Task = ({ task }) => {
   const [anchorElStatus, setAnchorElStatus] = useState(null);
   const openStatus = Boolean(anchorElStatus);
 
@@ -78,7 +78,7 @@ export const Task = ({ task, user }) => {
 
       <ListItemText
         primary={task.name}
-        secondary={user.username}
+        secondary={task.username}
         sx={{ marginLeft: "20px", overflow: "auto" }}
       />
       

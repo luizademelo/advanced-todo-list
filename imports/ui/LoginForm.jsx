@@ -23,8 +23,6 @@ export const LoginForm = () => {
       }
     });
 
-
-
   };
 
   const handleSignUp = (e) => {

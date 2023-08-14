@@ -1,12 +1,6 @@
 import React from "react";
 import { Meteor } from "meteor/meteor";
-import {
-  Button,
-  List,
-  Typography,
-  ListItem,
-  ListItemText,
-} from "@mui/material";
+import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { redirect } from "react-router-dom";
 import { TasksCollection } from "../db/TasksCollection";
@@ -25,19 +19,25 @@ const logout = () => {
 export const TasksMenu = ({ user }) => {
   const navigate = useNavigate();
 
-  const userFilter = user ? {userId: user._id} : {}
+  const userPersonalFilter = user ? {userId: user._id, isPersonal: true} : {}
+  const nonPersonalFilter = {isPersonal: {$eq: false}}
 
   const tasks = useTracker(() =>
     useTracker(() => {
       const handler = Meteor.subscribe("tasks");
 
-      const tasks = TasksCollection.find(userFilter).fetch();
+      const tasks = TasksCollection.find({
+        $or: [
+          userPersonalFilter, 
+          nonPersonalFilter,
+        ]
+      }).fetch();
 
       return tasks;
     })
   );
 
-  console.log(tasks);
+  console.log(tasks); 
 
   if (!user) {
     navigate("/");
@@ -55,7 +55,7 @@ export const TasksMenu = ({ user }) => {
         <div className="user" onClick={logout}>
           {user.username}
         </div>
-        <TaskList tasks={tasks} user={user} />
+        <TaskList tasks={tasks}  />
       </div>
       <div className="add-button">
         <AddCircleOutlineIcon 
