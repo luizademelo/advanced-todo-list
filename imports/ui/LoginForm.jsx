@@ -19,7 +19,7 @@ export const LoginForm = () => {
           alert("Usuário não encontrado");
         }
       }else{
-        navigate("/tasks");
+        navigate("/home");
       }
     });
 
