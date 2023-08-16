@@ -28,7 +28,7 @@ export const Home = ({ user }) => {
   };
 
   return (
-    <div>
+    <div className="cards">
       <Card>
         <CardContent>
             <Typography>Tarefas Cadastradas:</Typography>

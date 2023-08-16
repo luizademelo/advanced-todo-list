@@ -40,7 +40,7 @@ export const TasksMenu = ({ user }) => {
 
   return (
     <div className="tasks-menu">
-      <DrawerMenu />
+      <DrawerMenu user={user} />
       <div>
         <Typography>Tarefas cadastradas</Typography>
         <div className="user" onClick={logout}>

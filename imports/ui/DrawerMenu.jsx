@@ -1,10 +1,10 @@
 import React, { Fragment, useState } from "react";
-import { Box, Button, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import { Box, Button, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from "@mui/material";
 import PersonIcon from '@mui/icons-material/Person';
 import HomeIcon from '@mui/icons-material/Home';
 import { useNavigate } from "react-router-dom";
 
-export const DrawerMenu = () => {
+export const DrawerMenu = ({user}) => {
 
   const navigate = useNavigate(); 
 
@@ -19,6 +19,17 @@ export const DrawerMenu = () => {
     <Box
       sx={{width: 200}}
     >
+      <List>
+        <ListItem 
+          // sx={{margin: '10px'}}
+        >
+          <ListItemIcon>
+          <img src={user.profile.photo} />
+          <ListItemText sx={{marginLeft: '10px'}} primary={user.username} secondary={user.emails[0].address}/>
+          </ListItemIcon>
+
+        </ListItem>
+      </List>
       <List>
         {['Home', 'Perfil'].map((text) => (
           <ListItem key={text} onClick={() => handleDrawerClick(text)}>
