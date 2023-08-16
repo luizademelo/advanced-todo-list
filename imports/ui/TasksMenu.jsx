@@ -4,6 +4,7 @@ import { Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { redirect } from "react-router-dom";
 import { TasksCollection } from "../db/TasksCollection";
+import { DrawerMenu } from "./DrawerMenu";
 import { TaskList } from "./TaskList";
 import { useTracker } from "meteor/react-meteor-data";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
@@ -39,7 +40,7 @@ export const TasksMenu = ({ user }) => {
 
   return (
     <div className="tasks-menu">
-
+      <DrawerMenu />
       <div>
         <Typography>Tarefas cadastradas</Typography>
         <div className="user" onClick={logout}>
@@ -53,9 +54,9 @@ export const TasksMenu = ({ user }) => {
           onClick={handleAddTask}
         ></AddCircleOutlineIcon>
       </div>
-      <div className="user-photo">
+      {/* <div className="user-photo">
           <img src={user.profile.photo} />
-      </div>
+      </div> */}
     </div>
   );
 };

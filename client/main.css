@@ -91,4 +91,5 @@ body {
 img{
   width: 20%;
   height: 20%;
+  border-radius: 50%;
 }
