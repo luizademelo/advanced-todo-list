@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Card, CardActions, CardContent, Typography } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Meteor } from "meteor/meteor";
@@ -29,10 +29,29 @@ export const Home = ({ user }) => {
 
   return (
     <div>
-      <h1>total de tarefas: {totalTasks}</h1>
-      <h1>tarefas em andamento: {inProgressTasks} </h1>
-      <h1>tarefas concluídas: {completedTasks} </h1>
-      <Button onClick={handleViewTasks}>Visualizar tarefas</Button>
+      <Card>
+        <CardContent>
+            <Typography>Tarefas Cadastradas:</Typography>
+            <Typography>{totalTasks}</Typography>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardContent>
+            <Typography>Tarefas em andamento:</Typography>
+            <Typography>{inProgressTasks}</Typography>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardContent>
+            <Typography>Tarefas Concluídas:</Typography>
+            <Typography>{completedTasks}</Typography>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardActions>
+            <Button onClick={handleViewTasks}>Visualizar Tarefas</Button>
+        </CardActions>
+      </Card>
     </div>
   );
 };
