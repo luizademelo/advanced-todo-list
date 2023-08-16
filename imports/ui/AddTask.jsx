@@ -31,7 +31,6 @@ export const AddTask = ({ user }) => {
     setDescription('');
 
     navigate('/tasks');
-
   }
 
   const handleCancel = () => {

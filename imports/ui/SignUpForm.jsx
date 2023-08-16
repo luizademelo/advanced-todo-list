@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Meteor } from "meteor/meteor";
 import { Accounts } from "meteor/accounts-base";
-import { Button, InputLabel, MenuItem, Select, TextField, Typography } from "@mui/material";
+import { Button, Input, InputLabel, MenuItem, TextField, Typography } from "@mui/material";
 
 export const SignUpForm = () => {
  
@@ -14,9 +13,7 @@ export const SignUpForm = () => {
   const [birth, setBirth] = useState("");
   const [sex, setSex] = useState("");
   const [company, setCompany] = useState("");
-
-  // TODO
-  // adicionar foto
+  const [photo, setPhoto] = useState(''); 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,17 +21,33 @@ export const SignUpForm = () => {
         username: name, 
         password: password,
         email: email,
-        birth: birth, 
-        sex: sex,
-        company: company
+        profile: {
+            birth: birth, 
+            sex: sex,
+            company: company,
+            photo: photo
+        }
     })
 
     navigate('/'); 
   }
 
+  const handleFileSubmit = (event) => {
+    const file = event.target.files[0]; 
+    
+    const reader = new FileReader(); 
+    reader.onload = (e) => {
+        setPhoto(e.target.result); 
+    }; 
+
+    reader.readAsDataURL(file); 
+    
+  }
+
   return (
       <div className="signup-form">
         <Typography sx={{alignSelf: 'center'}}>Cadastro de usuário</Typography>
+
         <div>
           <TextField
             label="Nome"
@@ -44,16 +57,17 @@ export const SignUpForm = () => {
             required
           />
         </div>
+
         <div>
             <TextField
                 label="Email"
-                type="email"
                 variant="outlined"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
             />
         </div>
+
         <div>
             <TextField
                 label="Senha"
@@ -63,6 +77,7 @@ export const SignUpForm = () => {
                 required
             />
         </div>
+
         <div>
             <TextField
                 label="Data de Nascimento"
@@ -73,6 +88,7 @@ export const SignUpForm = () => {
                 InputLabelProps={{shrink: true}}
             />
         </div>
+
         <div>
             <TextField 
                 label='Sexo'
@@ -85,14 +101,20 @@ export const SignUpForm = () => {
                 <MenuItem value={'M'}>Masculino</MenuItem>
             </TextField>
         </div>
+
         <div>
             <TextField
                 label='Empresa'
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
-
             />
         </div>
+
+        <div>
+            <InputLabel>Foto de Perfil</InputLabel>
+            <Input type="file" onChange={handleFileSubmit}/>
+        </div>
+        
         <Button variant="contained" onClick={handleSubmit}>Cadastrar</Button>
       </div>
   );
