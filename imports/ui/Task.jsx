@@ -54,19 +54,27 @@ export const Task = ({ task, user }) => {
   };
 
   const handleStatusChange = (status) => {
-    Meteor.call("tasks.update", task._id, task.name, task.description, status)
+
+    if(user._id != task.userId){
+      alert('Você não é o criador da tarefa!')
+    }else{
+      Meteor.call("tasks.update", task._id, task.name, task.description, status)
+    }
+    
     handleCloseStatus();
   }
 
   return (
-    <ListItem key={task._id} sx={{ bgcolor: "#f0f4ff", width: "15rem" }}>
+    <ListItem key={task._id} sx={{ bgcolor: "#f0f4ff", width: "15rem"}}>
 
       <ListItemIcon onClick={handleOpenStatus}>
-        <AssignmentIcon sx={{cursor: 'pointer'}}/>
+        <AssignmentIcon sx={{cursor: 'pointer', color: '#2196f3'}}/>
       </ListItemIcon>
 
       <Menu anchorEl={anchorElStatus} open={openStatus} onClose={handleCloseStatus}>
-        <MenuItem onClick={() => handleStatusChange('Cadastrada')}>Cadastrada</MenuItem>
+        <MenuItem 
+          onClick={() => handleStatusChange('Cadastrada')}
+        >Cadastrada</MenuItem>
         <MenuItem 
           onClick={() => handleStatusChange('Em Andamento')}
           disabled={task.status != 'Cadastrada'}

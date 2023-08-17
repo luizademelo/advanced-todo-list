@@ -11,13 +11,11 @@ export const Home = ({ user }) => {
   const { totalTasks, inProgressTasks, completedTasks } = useTracker(() => {
     const handler = Meteor.subscribe("tasks");
 
-    const totalTasks = TasksCollection.find({ userId: user._id }).count();
+    const totalTasks = TasksCollection.find({}).count();
     const inProgressTasks = TasksCollection.find({
-      userId: user._id,
       status: "Em Andamento",
     }).count();
     const completedTasks = TasksCollection.find({
-      userId: user._id,
       status: "Concluída",
     }).count();
     return { totalTasks, inProgressTasks, completedTasks };

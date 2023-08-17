@@ -39,10 +39,12 @@ export const TasksMenu = ({ user }) => {
   console.log(user);
 
   return (
-    <div className="tasks-menu">
+    <div>
+        <Typography variant="h4">Tarefas cadastradas</Typography>
       <DrawerMenu user={user} />
+
+    <div className="tasks-menu">
       <div>
-        <Typography>Tarefas cadastradas</Typography>
         <div className="user" onClick={logout}>
           {user.username}
         </div>
@@ -54,9 +56,10 @@ export const TasksMenu = ({ user }) => {
           onClick={handleAddTask}
         ></AddCircleOutlineIcon>
       </div>
-      {/* <div className="user-photo">
+      <div className="user-photo">
           <img src={user.profile.photo} />
-      </div> */}
+      </div>
+    </div>
     </div>
   );
 };

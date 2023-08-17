@@ -1,10 +1,10 @@
 import React from "react";
 import { Meteor } from "meteor/meteor";
 import { BrowserRouter, Switch, Routes, Route } from "react-router-dom";
-import { App } from "./App";
 import { TasksMenu } from "./TasksMenu";
 import { useTracker } from "meteor/react-meteor-data";
 import { AddTask } from "./AddTask";
+import {App} from './App'
 import { EditTask } from "./EditTask";
 import { SignUpForm } from "./SignUpForm";
 import { Home } from "./Home";

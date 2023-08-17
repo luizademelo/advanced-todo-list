@@ -1,15 +1,28 @@
-import { Typography } from '@mui/material';
+import { List, ListItem, Typography } from '@mui/material';
 import React from 'react'; 
-import {Meteor} from 'meteor/meteor'; 
-import { TasksCollection } from '../db/TasksCollection';
 
 export const UserProfile = ({user}) => {
 
-
     return (
-    <div>
-        <h1>Perfil de {user.username}</h1>
-        <Typography>Email: {user.emails[0].address}</Typography>
+    <div className='user-profile'>
+        <img src={user.profile.photo} />
+        <List>
+            <ListItem>
+                <Typography>Nome: {user.username}</Typography>
+            </ListItem>
+            
+            <ListItem>
+                <Typography>Email: {user.emails[0].address}</Typography>
+            </ListItem>
+
+            <ListItem>
+                <Typography>Data de Nascimento: {user.profile.birth}</Typography>
+            </ListItem>
+
+            <ListItem>
+                <Typography>Empresa: {user.profile.company}</Typography>
+            </ListItem>
+        </List>
     </div>
     );
 }
