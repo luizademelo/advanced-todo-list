@@ -36,30 +36,26 @@ export const TasksMenu = ({ user }) => {
     navigate("/addTask");
   };
 
-  console.log(user);
-
   return (
-    <div>
-        <Typography variant="h4">Tarefas cadastradas</Typography>
-      <DrawerMenu user={user} />
-
-    <div className="tasks-menu">
-      <div>
-        <div className="user" onClick={logout}>
-          {user.username}
-        </div>
-        <TaskList tasks={tasks} user={user} />
-      </div>
-      <div className="add-button">
-        <AddCircleOutlineIcon
-          sx={{ cursor: "pointer", width: "30px", height: "30px" }}
-          onClick={handleAddTask}
-        ></AddCircleOutlineIcon>
-      </div>
-      <div className="user-photo">
+    <div className="tasks-menu-container">
+    
+      <div className="tasks-menu-header">
+        <Typography variant="h6">Tarefas cadastradas</Typography>
+        <Typography onClick={logout}>{user.username}</Typography>
+        <div className="user-photo">
           <img src={user.profile.photo} />
+        </div>
       </div>
+
+          <TaskList tasks={tasks} user={user} />
+        <div className="add-button">
+          <AddCircleOutlineIcon
+            sx={{ cursor: "pointer", width: "30px", height: "30px" }}
+            onClick={handleAddTask}
+          ></AddCircleOutlineIcon>
+        </div>
+        <DrawerMenu user={user} />
     </div>
-    </div>
+
   );
 };

@@ -6,7 +6,7 @@ import { Task } from "./Task";
 export const TaskList = ({ tasks, user }) => { 
 
   return (
-    <List>
+    <List className="tasks-menu">
       {tasks.map((task) => (
           <Task key={task._id} task={task} user={user} />
       ))}

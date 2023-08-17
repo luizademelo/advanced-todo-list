@@ -65,7 +65,7 @@ export const Task = ({ task, user }) => {
   }
 
   return (
-    <ListItem key={task._id} sx={{ bgcolor: "#f0f4ff", width: "15rem"}}>
+    <ListItem key={task._id} >
 
       <ListItemIcon onClick={handleOpenStatus}>
         <AssignmentIcon sx={{cursor: 'pointer', color: '#2196f3'}}/>
