@@ -12,12 +12,15 @@ export const Home = ({ user }) => {
     const handler = Meteor.subscribe("tasks");
 
     const totalTasks = TasksCollection.find({}).count();
+
     const inProgressTasks = TasksCollection.find({
       status: "Em Andamento",
     }).count();
+
     const completedTasks = TasksCollection.find({
       status: "Concluída",
     }).count();
+    
     return { totalTasks, inProgressTasks, completedTasks };
   });
 
