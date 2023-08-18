@@ -20,7 +20,7 @@ export const Home = ({ user }) => {
     const completedTasks = TasksCollection.find({
       status: "Concluída",
     }).count();
-    
+
     return { totalTasks, inProgressTasks, completedTasks };
   });
 
@@ -48,9 +48,9 @@ export const Home = ({ user }) => {
             <Typography>{completedTasks}</Typography>
         </CardContent>
       </Card>
-      <Card>
+      <Card sx={{display: 'flex', justifyContent: 'center'}}>
         <CardActions>
-            <Button onClick={handleViewTasks}>Visualizar Tarefas</Button>
+            <Button sx={{fontWeight: 'bold'}} onClick={handleViewTasks}>Visualizar Tarefas</Button>
         </CardActions>
       </Card>
     </div>

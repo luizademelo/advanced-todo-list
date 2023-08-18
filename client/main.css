@@ -37,15 +37,6 @@ body {
   margin: 10px;
 }
 
-.user {
-  font-weight: bold;
-  cursor: pointer; 
-}
-
-.user {
-  display: flex;
-  align-self: flex-end;
-}
 
 .config-task-menu{
   display: flex;
@@ -80,10 +71,12 @@ body {
   gap: 15px;
 }
 
-.user-photo {
+.user {
   display: flex;
-  justify-self: flex-end;
+  justify-content: flex-end;
+  gap: 15px; 
 }
+
 
 img{
   width: 20%;
@@ -116,12 +109,15 @@ img{
 
 .tasks-menu-header {
   display: flex;
+  gap: 7px;
+  justify-content: center;
   align-items: center;
-  margin: 15px; 
+  margin: 15px;   
 }
 
 .tasks-menu-container {
   display: flex;
   flex-direction: column;
-
+  gap: 15px; 
 }
+

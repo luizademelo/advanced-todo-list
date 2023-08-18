@@ -38,24 +38,22 @@ export const TasksMenu = ({ user }) => {
 
   return (
     <div className="tasks-menu-container">
-    
       <div className="tasks-menu-header">
-        <Typography variant="h6">Tarefas cadastradas</Typography>
-        <Typography onClick={logout}>{user.username}</Typography>
-        <div className="user-photo">
+          <Typography variant="h6" sx={{marginLeft: '20px'}} >Tarefas cadastradas</Typography>
+        <div className="user">
+          <Typography sx={{cursor:'pointer', fontWeight: 'bold', alignSelf:'flex-end', marginBottom: '10px'}} onClick={logout}>{user.username}</Typography>
           <img src={user.profile.photo} />
         </div>
       </div>
 
-          <TaskList tasks={tasks} user={user} />
-        <div className="add-button">
-          <AddCircleOutlineIcon
-            sx={{ cursor: "pointer", width: "30px", height: "30px" }}
-            onClick={handleAddTask}
-          ></AddCircleOutlineIcon>
-        </div>
-        <DrawerMenu user={user} />
+      <TaskList tasks={tasks} user={user} />
+      <div className="add-button">
+        <AddCircleOutlineIcon
+          sx={{ cursor: "pointer", width: "30px", height: "30px" }}
+          onClick={handleAddTask}
+        ></AddCircleOutlineIcon>
+      </div>
+      <DrawerMenu user={user} />
     </div>
-
   );
 };

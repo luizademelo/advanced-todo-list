@@ -8,9 +8,6 @@ export const EditTask = () => {
   const task = location.state?.task;
 
   const navigate = useNavigate();
-  // if(!task){
-  //     navigate('/');
-  // }
 
   const [name, setName] = useState(task.name);
   const [description, setDescription] = useState(task.description);
