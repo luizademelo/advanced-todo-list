@@ -95,6 +95,7 @@ img{
   justify-content: center;
   align-items: center;
   background-color: #f0f4ff;
+  border-radius: 10%;
 }
 
 .tasks-menu {

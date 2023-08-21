@@ -17,6 +17,8 @@ export const LoginForm = () => {
       if(error){
         if(error.reason == "User not found"){
           alert("Usuário não encontrado");
+        }else{
+          alert("Senha incorreta"); 
         }
       }else{
         navigate("/home");

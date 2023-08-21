@@ -23,7 +23,7 @@ export const DrawerMenu = ({user}) => {
 
   const list = (anchor) => (
     <Box
-      sx={{width: 220}}
+      sx={{width: 230}}
     >
       <List>
         <ListItem>

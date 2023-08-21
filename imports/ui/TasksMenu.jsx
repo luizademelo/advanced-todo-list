@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 import { Meteor } from "meteor/meteor";
-import { Typography } from "@mui/material";
+import { FormControlLabel, FormGroup, Switch, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { redirect } from "react-router-dom";
 import { TasksCollection } from "../db/TasksCollection";
@@ -17,13 +17,21 @@ const logout = () => {
 export const TasksMenu = ({ user }) => {
   const navigate = useNavigate();
 
+  const [showCompleted, setShowCompleted] = useState(false); 
+
+  const completedTasksFilter = { status: {$eq: "Concluída"}}; 
+
   const tasks = useTracker(() =>
     useTracker(() => {
-      const handler = Meteor.subscribe("tasks");
-
-      const tasks = TasksCollection.find({}).fetch();
-
-      return tasks;
+      
+      if(showCompleted){
+        const handler = Meteor.subscribe("tasks");
+        return  TasksCollection.find({}).fetch();
+      }
+      else{
+        const handler = Meteor.subscribe("notFinishedTasks"); 
+        return TasksCollection.find({}).fetch(); 
+      }
     })
   );
 
@@ -39,12 +47,17 @@ export const TasksMenu = ({ user }) => {
   return (
     <div className="tasks-menu-container">
       <div className="tasks-menu-header">
-          <Typography variant="h6" sx={{marginLeft: '20px'}} >Tarefas cadastradas</Typography>
+          <Typography variant="h6" sx={{marginLeft: '15px'}} >Tarefas cadastradas</Typography>
         <div className="user">
           <Typography sx={{cursor:'pointer', fontWeight: 'bold', alignSelf:'flex-end', marginBottom: '10px'}} onClick={logout}>{user.username}</Typography>
           <img src={user.profile.photo} />
         </div>
-      </div>
+      </div>       
+        <FormGroup>
+          <FormControlLabel control={<Switch 
+            onClick={() => setShowCompleted(!showCompleted)}
+          />} sx={{marginLeft: '20px'}} label="Mostrar tarefas concluídas" />
+        </FormGroup>                               
 
       <TaskList tasks={tasks} user={user} />
       <div className="add-button">

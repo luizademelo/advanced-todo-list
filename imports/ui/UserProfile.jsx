@@ -20,6 +20,10 @@ export const UserProfile = ({user}) => {
             </ListItem>
 
             <ListItem>
+                <Typography>Sexo: {user.profile.sex} </Typography>
+            </ListItem>
+
+            <ListItem>
                 <Typography>Empresa: {user.profile.company}</Typography>
             </ListItem>
         </List>
