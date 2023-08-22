@@ -4,6 +4,7 @@ import PersonIcon from '@mui/icons-material/Person';
 import HomeIcon from '@mui/icons-material/Home';
 import TaskIcon from '@mui/icons-material/Task';
 import { useNavigate } from "react-router-dom";
+import MenuIcon from '@mui/icons-material/Menu';
 
 export const DrawerMenu = ({user}) => {
 
@@ -63,7 +64,7 @@ export const DrawerMenu = ({user}) => {
 
   return (
       <Fragment>
-        <Button onClick={toggleDrawer(anchor, true)}>Menu</Button>
+        <Button startIcon={<MenuIcon />} onClick={toggleDrawer(anchor, true)}>Menu</Button>
         <Drawer
           anchor={anchor}
           open={state}

@@ -71,6 +71,9 @@ export const TasksMenu = ({ user}) => {
   return (
     <div className="tasks-menu-container">
       <div className="tasks-menu-header">
+
+      <DrawerMenu user={user} />
+      
         <Typography variant="h6" sx={{ marginLeft: "15px" }}>
           Tarefas cadastradas
         </Typography>
@@ -89,14 +92,15 @@ export const TasksMenu = ({ user}) => {
           <img src={user.profile.photo} />
         </div>
       </div>
-
-      <FormGroup>
-        <FormControlLabel
-          control={<Switch onClick={() => setShowCompleted(!showCompleted)} />}
-          sx={{ marginLeft: "20px" }}
-          label="Mostrar tarefas concluídas"
-        />
-      </FormGroup>
+    
+      <div className="switch-completed">
+        <FormGroup>
+          <FormControlLabel
+            control={<Switch onClick={() => setShowCompleted(!showCompleted)} />}
+            label="Mostrar tarefas concluídas"
+          />
+        </FormGroup>
+      </div>
 
       <div className="search-field">
       <Paper sx={{ display: "flex", justifyContent: "center", width: "250px" }}>
@@ -108,22 +112,24 @@ export const TasksMenu = ({ user}) => {
       </div>
 
       <TaskList tasks={tasks} user={user} />
-
-      <Stack spacing={2}>
-        <Pagination 
-          count={Math.ceil(tasksCount/4)} 
-          page={page}
-          onChange={handlePageChange}
-          />
-      </Stack>
+      
+      <div className="pagination">
+        <Stack spacing={2}>
+          <Pagination 
+            count={Math.ceil(tasksCount/4)} 
+            page={page}
+            onChange={handlePageChange}
+            />
+        </Stack>
+      </div>
 
       <div className="add-button">
         <AddCircleOutlineIcon
-          sx={{ cursor: "pointer", width: "30px", height: "30px" }}
+          sx={{fontSize: '2.5rem'}}
           onClick={handleAddTask}
         ></AddCircleOutlineIcon>
       </div>
-      <DrawerMenu user={user} />
+ 
     </div>
   );
 };

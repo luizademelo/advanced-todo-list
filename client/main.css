@@ -59,10 +59,10 @@ body {
 }
 
 .add-button {
-  display: flex;
-  justify-content: flex-end;
   align-self: flex-end;
-  margin-left: 20px; 
+  cursor: pointer;
+  width: 4rem;
+  height: 4rem; 
 }
 
 .signup-form {
@@ -104,8 +104,12 @@ img{
   align-items: center;
   justify-content: center;
   margin: 15px;
+  padding: 10px; 
   background-color: #f0f4ff;
-
+  border-radius: 4%;
+  border-color: #000066;
+  border-width: 2px;
+  border-style: solid;
 }
 
 .tasks-menu-header {
@@ -120,9 +124,22 @@ img{
   display: flex;
   flex-direction: column;
   gap: 15px; 
+  background-color: #bfcfff;
+  border-radius: 3%;
+  border-style: outset;
 }
 
 .search-field {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.switch-completed {
   display: flex;
   justify-content: center;
 }
