@@ -122,3 +122,7 @@ img{
   gap: 15px; 
 }
 
+.search-field {
+  display: flex;
+  justify-content: center;
+}
