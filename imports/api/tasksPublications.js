@@ -6,7 +6,7 @@ Meteor.publish('tasks', function publishTasks(){
 })
 
 Meteor.publish('notFinishedTasks', function publishTasks(){
-    return TasksCollection.find({$or: [{userId: this.userId, status: {$ne: 'Concluída'}}, {isPersonal: false, status: {$ne: 'Concluída'}}]})
+    return TasksCollection.find({$or: [{userId: this.userId, status: {$ne: 'Concluída'}}, {isPersonal: false, status: {$ne: 'Concluída'}}]}); 
 })
 
 Meteor.publish('textFilteredTasks', function(text){
@@ -14,7 +14,7 @@ Meteor.publish('textFilteredTasks', function(text){
                     $or: [
                         {userId: this.userId}, 
                         {isPersonal: false}
-                    ]
+                    ],
                    }; 
 
     return TasksCollection.find(search); 

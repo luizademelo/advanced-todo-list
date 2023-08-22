@@ -3,9 +3,10 @@ import { Meteor } from "meteor/meteor";
 import {
   FormControlLabel,
   FormGroup,
-  IconButton,
   InputBase,
+  Pagination,
   Paper,
+  Stack,
   Switch,
   Typography,
 } from "@mui/material";
@@ -16,36 +17,41 @@ import { DrawerMenu } from "./DrawerMenu";
 import { TaskList } from "./TaskList";
 import { useTracker } from "meteor/react-meteor-data";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import SearchIcon from "@mui/icons-material/Search";
 
 const logout = () => {
   Meteor.logout();
   redirect("/");
 };
 
-export const TasksMenu = ({ user }) => {
+export const TasksMenu = ({ user}) => {
   const navigate = useNavigate();
 
   const [showCompleted, setShowCompleted] = useState(false);
   const [searchText, setSearchText] = useState("");
+  const [skipPages, setSkipPages] = useState(0); 
+  const [page, setPage] = useState(1); 
 
-  const tasks = useTracker(() =>
-    useTracker(() => {
-      const noDataAvailable = { tasks: [] };
+  const {tasks, tasksCount} = useTracker(() => {
+    
+    const noDataAvailable = { tasks: [] };
+    let tasks,tasksCount;
+    if (showCompleted) {
+      const handler = Meteor.subscribe("tasks");
+      tasks = TasksCollection.find({}, {skip: skipPages, limit: 4}).fetch();
+      tasksCount = TasksCollection.find({}).count(); 
+    } else if (searchText != "") {
+      const handler = Meteor.subscribe("textFilteredTasks", searchText);
+      tasks = TasksCollection.find({},{skip: skipPages,limit: 4}).fetch()
+      tasksCount = TasksCollection.find({}).count(); 
+    } else {
+      const handler = Meteor.subscribe("notFinishedTasks");
+      tasks = TasksCollection.find({},{skip: skipPages, limit: 4}).fetch()
+      tasksCount = TasksCollection.find({}).count(); 
+    }
+    return {tasks, tasksCount}; 
+  }); 
 
-      if (showCompleted) {
-        const handler = Meteor.subscribe("tasks");
-        return TasksCollection.find({}).fetch();
-      } else if (searchText != "") {
-        console.log(searchText);
-        const handler = Meteor.subscribe("textFilteredTasks", searchText);
-        return TasksCollection.find({}).fetch();
-      } else {
-        const handler = Meteor.subscribe("notFinishedTasks");
-        return TasksCollection.find({}).fetch();
-      }
-    })
-  );
+  console.log(tasks);
 
   if (!user) {
     navigate("/");
@@ -55,6 +61,12 @@ export const TasksMenu = ({ user }) => {
   const handleAddTask = (e) => {
     navigate("/addTask");
   };
+
+  const handlePageChange = (event, page) => {
+    setSkipPages((page-1)*4); 
+    console.log(page, skipPages); 
+    setPage(page); 
+  }
 
   return (
     <div className="tasks-menu-container">
@@ -85,7 +97,7 @@ export const TasksMenu = ({ user }) => {
           label="Mostrar tarefas concluídas"
         />
       </FormGroup>
-      
+
       <div className="search-field">
       <Paper sx={{ display: "flex", justifyContent: "center", width: "250px" }}>
         <InputBase
@@ -96,6 +108,15 @@ export const TasksMenu = ({ user }) => {
       </div>
 
       <TaskList tasks={tasks} user={user} />
+
+      <Stack spacing={2}>
+        <Pagination 
+          count={Math.ceil(tasksCount/4)} 
+          page={page}
+          onChange={handlePageChange}
+          />
+      </Stack>
+
       <div className="add-button">
         <AddCircleOutlineIcon
           sx={{ cursor: "pointer", width: "30px", height: "30px" }}
