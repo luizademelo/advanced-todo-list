@@ -5,7 +5,7 @@ import { Meteor } from "meteor/meteor";
 import { TasksCollection } from "../db/TasksCollection";
 import { useTracker } from "meteor/react-meteor-data";
 
-export const Home = ({ user }) => {
+export const Home = () => {
   const navigate = useNavigate();
 
   const { totalTasks, inProgressTasks, completedTasks } = useTracker(() => {
@@ -33,24 +33,24 @@ export const Home = ({ user }) => {
       <Card>
         <CardContent>
             <Typography>Tarefas Cadastradas:</Typography>
-            <Typography>{totalTasks}</Typography>
+            <Typography sx={{fontSize: '2rem'}}>{totalTasks}</Typography>
         </CardContent>
       </Card>
       <Card>
         <CardContent>
             <Typography>Tarefas em andamento:</Typography>
-            <Typography>{inProgressTasks}</Typography>
+            <Typography sx={{fontSize: '2rem'}}>{inProgressTasks}</Typography>
         </CardContent>
       </Card>
       <Card>
         <CardContent>
             <Typography>Tarefas Concluídas:</Typography>
-            <Typography>{completedTasks}</Typography>
+            <Typography sx={{fontSize: '2rem'}}>{completedTasks}</Typography>
         </CardContent>
       </Card>
       <Card sx={{display: 'flex', justifyContent: 'center'}}>
         <CardActions>
-            <Button sx={{fontWeight: 'bold'}} onClick={handleViewTasks}>Visualizar Tarefas</Button>
+            <Button sx={{fontSize: '1rem'}} onClick={handleViewTasks}>Visualizar Tarefas</Button>
         </CardActions>
       </Card>
     </div>

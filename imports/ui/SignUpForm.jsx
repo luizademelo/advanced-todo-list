@@ -46,39 +46,35 @@ export const SignUpForm = () => {
 
   return (
       <div className="signup-form">
-        <Typography sx={{alignSelf: 'center'}}>Cadastro de usuário</Typography>
+        <Typography variant="h6">Cadastrando usuário</Typography>
 
-        <div>
           <TextField
             label="Nome"
             variant="outlined"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
+            sx={{width: '75%'}}
           />
-        </div>
 
-        <div>
             <TextField
                 label="Email"
                 variant="outlined"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
+                sx={{width: '75%'}}
             />
-        </div>
 
-        <div>
             <TextField
                 label="Senha"
                 variant="outlined"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
+                sx={{width: '75%'}}
             />
-        </div>
 
-        <div>
             <TextField
                 label="Data de Nascimento"
                 type="date"
@@ -86,34 +82,33 @@ export const SignUpForm = () => {
                 value={birth}
                 onChange={(e) => setBirth(e.target.value)}
                 InputLabelProps={{shrink: true}}
+                sx={{width: '75%'}}
             />
-        </div>
 
-        <div>
             <TextField 
                 label='Sexo'
                 select
                 value={sex}
                 onChange={(e) => setSex(e.target.value)}  
-                sx={{width: '60%'}}           
+                sx={{width: '75%'}}
             >
                 <MenuItem value={'F'}>Feminino</MenuItem>
                 <MenuItem value={'M'}>Masculino</MenuItem>
             </TextField>
-        </div>
 
-        <div>
             <TextField
                 label='Empresa'
                 value={company}
                 onChange={(e) => setCompany(e.target.value)}
+                sx={{width: '75%'}}
             />
-        </div>
 
-        <div>
             <InputLabel>Foto de Perfil</InputLabel>
-            <Input type="file" onChange={handleFileSubmit}/>
-        </div>
+            <Input 
+                type="file" 
+                onChange={handleFileSubmit}
+                sx={{width: '75%'}}
+                />
         
         <Button variant="contained" onClick={handleSubmit}>Cadastrar</Button>
       </div>

@@ -50,7 +50,7 @@ body {
   flex-direction: column;
   align-items: center;
   margin: 10px;
-  gap: 10px; 
+  gap: 18px; 
 }
 
 .task-form-buttons {
@@ -68,8 +68,10 @@ body {
 .signup-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 15px;
 }
+
 
 .user {
   display: flex;
@@ -87,8 +89,9 @@ img{
 .cards{
   display: grid; 
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px; 
+  gap: 25px; 
 }
+
 
 .user-profile {
   display: flex;
@@ -96,7 +99,10 @@ img{
   align-items: center;
   background-color: #f0f4ff;
   border-radius: 10%;
+  gap: 35px; 
 }
+
+
 
 .tasks-menu {
   display: flex;
@@ -115,7 +121,6 @@ img{
 .tasks-menu-header {
   display: flex;
   gap: 7px;
-  justify-content: center;
   align-items: center;
   margin: 15px;   
 }

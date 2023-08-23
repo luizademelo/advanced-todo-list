@@ -15,6 +15,7 @@ export const AddTask = ({ user }) => {
 
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
+  const [date, setDate] = useState(''); 
   const [isPersonal, setIsPersonal] = useState(false); 
 
   const handleInsert = e => {
@@ -24,8 +25,7 @@ export const AddTask = ({ user }) => {
       return; 
     }
 
-
-    Meteor.call('tasks.insert', name, description, isPersonal, user.username); 
+    Meteor.call('tasks.insert', name, description, isPersonal, user.username, date); 
     
     setName(''); 
     setDescription('');
@@ -48,6 +48,7 @@ export const AddTask = ({ user }) => {
         <TextField 
           variant="standard" 
           label="Nome"
+          required
           onChange={(e) => setName(e.target.value)}
           ></TextField>
 
@@ -57,7 +58,14 @@ export const AddTask = ({ user }) => {
           onChange={(e) => setDescription(e.target.value)}
           ></TextField>
 
-        <TextField variant="standard" label="Data"></TextField>
+        <TextField 
+          variant="standard" 
+          label="Data"
+          type="date"
+          onChange={(e) => setDate(e.target.value)}
+          sx={{width: '100%'}}
+          InputLabelProps={{shrink: true}}
+          ></TextField>
         
         <FormControlLabel 
           label="É uma tarefa pessoal" 

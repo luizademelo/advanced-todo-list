@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Meteor } from "meteor/meteor";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { Link, Typography } from "@mui/material";
+import { Typography } from "@mui/material";
 
 export const LoginForm = () => {
   const [username, setUsername] = useState("");

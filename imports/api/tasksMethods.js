@@ -4,7 +4,7 @@ import { TasksCollection } from '../db/TasksCollection';
 
 
 Meteor.methods({
-    'tasks.insert'(name, description, isPersonal, username){
+    'tasks.insert'(name, description, isPersonal, username, date){
         check(name, String); 
         check(isPersonal, Boolean); 
 
@@ -16,6 +16,7 @@ Meteor.methods({
             name,
             description,
             status: 'Cadastrada', 
+            date,
             createdAt: new Date(),
             userId: this.userId,
             username, 
@@ -31,7 +32,7 @@ Meteor.methods({
         TasksCollection.remove(taskId); 
     },
 
-    'tasks.update'(taskId, name, description, status){
+    'tasks.update'(taskId, name, description, status, isPersonal){
         check(taskId, String); 
         check(name, String); 
         check(description, String); 
@@ -44,7 +45,8 @@ Meteor.methods({
             $set: {
                 name,
                 description,
-                status
+                status,
+                isPersonal
             }
         }); 
     }

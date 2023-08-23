@@ -24,7 +24,7 @@ export const DrawerMenu = ({user}) => {
 
   const list = (anchor) => (
     <Box
-      sx={{width: 230}}
+      sx={{width: 230, overflow: 'hidden'}}
     >
       <List>
         <ListItem>
