@@ -55,7 +55,11 @@ export const LoginForm = () => {
             required
           />
         </div>
-        <Button variant="contained" onClick={handleSubmit}>
+        <Button 
+          variant="contained" 
+          onClick={handleSubmit}
+          disabled={!username || !password}
+          >
           Entrar
         </Button>
         <div>

@@ -108,9 +108,14 @@ export const SignUpForm = () => {
                 type="file" 
                 onChange={handleFileSubmit}
                 sx={{width: '75%'}}
-                />
+                required             
+            />
         
-        <Button variant="contained" onClick={handleSubmit}>Cadastrar</Button>
+        <Button 
+          variant="contained" 
+          onClick={handleSubmit} 
+          disabled={!name || !password || !email || !photo} 
+          >Cadastrar</Button>
       </div>
   );
 };
