@@ -31,7 +31,6 @@ export const EditTask = () => {
 
   return (
     <div className="edit-task-menu">
-      <Typography>Editando tarefa: {task.name}</Typography>
       <div className="task-form">
         <TextField
           variant="standard"

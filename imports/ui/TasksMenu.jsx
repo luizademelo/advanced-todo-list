@@ -36,6 +36,7 @@ export const TasksMenu = ({ user }) => {
   const { tasks, tasksCount, isLoading } = useTracker(() => {
     const noDataAvailable = { tasks: [] , tasksCount: 0};
     let tasks, tasksCount, handler;
+
     if (showCompleted) {
       handler = Meteor.subscribe("tasks");
     } else if (searchText != "") {
@@ -58,7 +59,7 @@ export const TasksMenu = ({ user }) => {
     return;
   }
 
-  const handleAddTask = (e) => {
+  const handleAddTask = () => {
     navigate("/addTask");
   };
 
