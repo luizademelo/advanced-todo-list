@@ -37,13 +37,7 @@ export const TasksMenu = ({ user }) => {
     const noDataAvailable = { tasks: [] , tasksCount: 0};
     let tasks, tasksCount, handler;
 
-    if (showCompleted) {
-      handler = Meteor.subscribe("tasks");
-    } else if (searchText != "") {
-      handler = Meteor.subscribe("textFilteredTasks", searchText);
-    } else {
-      handler = Meteor.subscribe("notFinishedTasks");
-    }
+    handler = Meteor.subscribe("tasks", showCompleted, searchText);
 
     if(!handler.ready()){
       return {...noDataAvailable, isLoading: true}; 

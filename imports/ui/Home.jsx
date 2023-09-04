@@ -9,7 +9,7 @@ export const Home = () => {
   const navigate = useNavigate();
 
   const { totalTasks, inProgressTasks, completedTasks } = useTracker(() => {
-    const handler = Meteor.subscribe("tasks");
+    const handler = Meteor.subscribe("tasks", true, "");
 
     const totalTasks = TasksCollection.find({}).count();
 

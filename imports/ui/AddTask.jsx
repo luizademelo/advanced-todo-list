@@ -80,7 +80,7 @@ export const AddTask = ({ user }) => {
           </Button>
         </div>
         <div>
-          <Button id="form-button" variant="contained" onClick={handleInsert}>
+          <Button id="form-button" variant="contained" onClick={handleInsert} disabled={!name}>
             Salvar
           </Button>
         </div>
